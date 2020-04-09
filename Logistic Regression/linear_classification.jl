@@ -5,16 +5,16 @@ using Statistics
 using Base.Iterators: repeated
 
 # Importing the dataset
-dataset = DataFrame(CSV.File("data.txt", header=false))
+dataset = DataFrame(CSV.File("linear_problem/data.txt", header=false))
 newnames = ["Score_1", "Score_2", "Result"]
 names!(dataset, Symbol.(newnames))
 
 # Visualize the original data
 @df dataset scatter(:Score_1, :Score_2,
-                zcolor = :Result, label=false)
+                color = :Result, label=false)
 xaxis!("Score in Test 1")
 yaxis!("Score in Test 2")
-#savefig("original_data.png")
+savefig("linear_problem/original_data.png")
 
 # Convert the dataset into array
 xdata = Matrix(dataset[:,1:2])
@@ -54,7 +54,7 @@ end
 plot(err, lw=2, label=false)
 xaxis!("Number of interations")
 yaxis!("Cost function")
-savefig("cost.png")
+savefig("linear_problem/cost.png")
 
 
 # Test the accuracy
@@ -71,7 +71,7 @@ xs = LinRange(xrange...,25)
 Z = [Flux.Tracker.data(ŷ(hcat(x,y))[1]) for x=xs, y=xs]
 
 contour(xs,xs,Z, levels=1)
-scatter!(xdata[:,1],xdata[:,2], zcolor = ydata, label=false)
+scatter!(xdata[:,1],xdata[:,2], color = ydata, label=false)
 xaxis!("Score 1 (Z-score)")
 yaxis!("Score 2 (Z-score)")
-savefig("result.png")
+savefig("linear_problem/result.png")
