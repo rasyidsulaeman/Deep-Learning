@@ -4,9 +4,9 @@ using Statistics: mean
 using PyPlot
 
 #Create a type names parameters and gradiens
-struct parameters
-    w
-    b
+struct parameters{T<:Float64}
+    w::Array{T,2}
+    b::T
 end
 
 struct gradiens
