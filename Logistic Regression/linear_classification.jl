@@ -56,6 +56,7 @@ xaxis!("Number of interations")
 yaxis!("Cost function")
 savefig("cost.png")
 
+
 # Test the accuracy
 function accuracy(x,y)
     predict = ŷ(x) .> 0.5

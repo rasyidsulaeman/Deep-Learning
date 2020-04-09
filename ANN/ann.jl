@@ -37,7 +37,7 @@ end
 xtrain, ytrain, xtest, ytest = partition(xdata,ydata,ratio=0.2)
 
 # Features scaling
-x_features = fit(ZScoreTransform,xtrain,dims=2)
+x_features = fit(ZScoreTransform,xtrain,dims=1)
 x_train = StatsBase.transform(x_features,xtrain)
 
 # Spefify the model
